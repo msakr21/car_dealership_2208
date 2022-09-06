@@ -45,4 +45,18 @@ class Dealership
     "address" => @address
     }
   end
+
+  def cars_sorted_by_price
+   @inventory.sort_by do |car|
+    car.total_cost
+   end
+  end
+
+  def inventory_hash
+    hash = {}
+    @inventory.each do |car|
+      hash[car.make] = cars_by_make(car.make)
+    end
+    hash
+  end
 end
